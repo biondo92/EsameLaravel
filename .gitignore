@@ -6,3 +6,60 @@ composer.lock
 .env.php
 .DS_Store
 Thumbs.db
+
+
+Creato da https://www.toptal.com/developers/gitignore/api/laravel,compositor,visualstudiocode
+Edit all'indirizzo https://www.toptal.com/developers/gitignore?templates-laravel,composer,visualstudiocode
+
+- Compositore ?
+Il compositore.phar
+/vendor /
+
+Commettere il file di blocco della tua candidatura https://getcomposer.org/doc/01-basic-usage.md-commit-your-composer-lock-file-to-version-control
+Si può scegliere di ignorare un file di blocco della libreria http://getcomposer.org/doc/02-libraries.md-lock-file
+- il compositore.lock
+
+- Laravel ?
+Node-modules/
+Il npm-debug.log
+Filato-error.log
+
+- Laravel 4 specifico
+Bootstrap/compiled.php
+App / archiviazione /
+
+Laravel 5 & Lumen specifico
+Pubblico/deposito di archiviazione
+Il pubblico / caldo
+
+Laravel 5 & Lumen specifico con un percorso pubblico cambiato
+public-html/stagatura
+Pubblica-html/caldo
+
+Stoccaggio/*. chiavi
+.env
+Casa di casa.yaml
+Homestead.json - Immagini
+/.vagrant
+.phpunit.result.cache
+
+- VisualStudioCode ?
+Codice .vs / *
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+Storia locale per Visual Studio Code
+.storia /
+
+- Costruire le estensioni del codice di Visual Studio
+*.vsix
+
+- VisualStudioCode Patch ?
+Ignorare tutta la storia locale dei file
+La storia
+.ionide
+
+Fine di https://www.toptal.com/developers/gitignore/api/laravel,compositor,visualstudiocode
