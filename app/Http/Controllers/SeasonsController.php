@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\translations;
+use App\Models\seasons;
 use Illuminate\Http\Request;
 
-class translationsController extends Controller
+class SeasonsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class translationsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(translations $translations)
+    public function show(seasons $seasons)
     {
         //
     }
@@ -34,7 +34,7 @@ class translationsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, translations $translations)
+    public function update(Request $request, seasons $seasons)
     {
         //
     }
@@ -42,7 +42,7 @@ class translationsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(translations $translations)
+    public function destroy(seasons $seasons)
     {
         //
     }
