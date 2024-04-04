@@ -14,7 +14,10 @@ class CreateSeasonsTable extends Migration
         Schema::create('seasons', function (Blueprint $table) {
             $table->id('seasonId');
             $table->foreignId('serieId');
+            $table->string('title');
             $table->timestamps();
+
+            $table->foreign('serieId')->references('serieId')->on('series');
         });
     }
 

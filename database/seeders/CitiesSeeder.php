@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\cities;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,16 @@ class CitiesSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $csv = storage_path("data/cities.csv");
+        $file = fopen($csv, "r");
+        while (($data = fgetcsv($file, 2000, ",")) !== false) {
+            cities::create(
+                [
+
+                    "name" => $data[0],
+
+                ]
+            );
+        }
     }
 }

@@ -17,6 +17,8 @@ class CreateSeriesTable extends Migration
             $table->string('title');
             $table->unsignedInteger('rating');
             $table->timestamps();
+
+            $table->foreign('categoryId')->references('categoryId')->on('categories');
         });
     }
 

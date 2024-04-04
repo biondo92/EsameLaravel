@@ -19,6 +19,8 @@ class CreateUserProfilesTable extends Migration
             $table->double("credits");
             $table->unsignedInteger("languageId");
             $table->timestamps();
+
+            $table->foreign('languageId')->references('languageId')->on('languages');
         });
     }
 

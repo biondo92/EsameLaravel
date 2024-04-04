@@ -18,6 +18,9 @@ class CreateAddressesTable extends Migration
             $table->string("postalCode");
             $table->string("state");
             $table->timestamps();
+
+            $table->foreign('cityId')->references('cityId')->on('cities');
+            $table->foreign('addressId')->references('addressId')->on('users_addresses');
         });
     }
 

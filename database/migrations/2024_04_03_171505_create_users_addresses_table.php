@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateUsersAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,9 @@ return new class extends Migration
             $table->primary("userId", "addressId");
             $table->unsignedInteger("userId");
             $table->unsignedInteger("addressId");
+
+            $table->foreign('userId')->references('userId')->on('users');
+            $table->foreign('addressId')->references('addressId')->on('addresses');
         });
     }
 

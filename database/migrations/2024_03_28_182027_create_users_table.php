@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
 
             //la relazione
             $table->foreign('roleId')->references('roleId')->on('roles');
+            $table->foreign('userId')->references('userId')->on('user_addresses');
         });
     }
 
