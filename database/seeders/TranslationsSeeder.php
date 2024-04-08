@@ -15,7 +15,7 @@ class translationsSeeder extends Seeder
     {
         translations::create(
             [
-                "translationId" => 1,
+                "entityId" => 1,
                 "languageId" => 1,
                 "title" => "Administrator"
             ]
@@ -23,7 +23,7 @@ class translationsSeeder extends Seeder
 
         translations::create(
             [
-                "translationId" => 1,
+                "entityId" => 1,
                 "languageId" => 2,
                 "title" => "Amministratore"
             ]
@@ -31,7 +31,7 @@ class translationsSeeder extends Seeder
 
         translations::create(
             [
-                "translationId" => 2,
+                "entityId" => 2,
                 "languageId" => 1,
                 "title" => "User"
             ]
@@ -39,7 +39,7 @@ class translationsSeeder extends Seeder
 
         translations::create(
             [
-                "translationId" => 2,
+                "entityId" => 2,
                 "languageId" => 2,
                 "title" => "Utente"
             ]
@@ -47,7 +47,7 @@ class translationsSeeder extends Seeder
 
         translations::create(
             [
-                "translationId" => 3,
+                "entityId" => 3,
                 "languageId" => 1,
                 "title" => "Guest"
             ]
@@ -55,7 +55,7 @@ class translationsSeeder extends Seeder
 
         translations::create(
             [
-                "translationId" => 3,
+                "entityId" => 3,
                 "languageId" => 2,
                 "title" => "Ospite"
             ]
@@ -63,14 +63,14 @@ class translationsSeeder extends Seeder
 
         translations::create(
             [
-                "translationId" => 4,
+                "entityId" => 4,
                 "languageId" => 1,
                 "title" => "Action"
             ]
         );
         translations::create(
             [
-                "translationId" => 4,
+                "entityId" => 4,
                 "languageId" => 2,
                 "title" => "Azione"
             ]
