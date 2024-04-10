@@ -11,142 +11,150 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // tabelle generiche
         Schema::create('languages', function (Blueprint $table) {
             $table->id("id");
             $table->string("description");
             $table->timestamps();
         });
+
         Schema::create('settings', function (Blueprint $table) {
-            $table->id("settingId");
+            $table->id("id");
             $table->string("code");
             $table->string("key");
             $table->string("value");
             $table->timestamps();
         });
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id('roleId');
-            $table->unsignedInteger('roleDescriptionId');
+
+        Schema::create('cities', function (Blueprint $table) {
+            $table->id("id");
+            $table->string("name");
             $table->timestamps();
         });
-        Schema::create('roleDescriptions', function (Blueprint $table) {
-            $table->id('roleDescriptionId');
-            $table->unsignedInteger('languageId');
+
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id('id');
+            $table->unsignedBigInteger('roleDescriptionId');
+            $table->timestamps();
+        });
+
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id("id");
+            $table->unsignedBigInteger('categoryDescriptionId');
+            $table->timestamps();
+        });
+
+        // tabelle descrittive
+        Schema::create('role_descriptions', function (Blueprint $table) {
+            $table->id('id');
+            $table->unsignedBigInteger('languageId');
             $table->string('description');
             $table->timestamps();
 
             $table->foreign('languageId')->references('id')->on('languages');
         });
 
-        Schema::create('roles', function (Blueprint $table) {
-            $table->foreign('roleDescriptionId')->references('roleDescriptionId')->on('roleDescriptions');
-        });
-
-        Schema::create('users', function (Blueprint $table) {
-            $table->id("userId");
-            $table->string("userName");
-            $table->string("password");
-            $table->foreignId("roleId");
+        Schema::create('category_descriptions', function (Blueprint $table) {
+            $table->id('id');
+            $table->unsignedBigInteger('languageId');
+            $table->string('description');
             $table->timestamps();
 
-            //la relazione
-            $table->foreign('roleId')->references('roleId')->on('roles');
-            //$table->foreign('userId')->references('userId')->on('user_addresses');
+            $table->foreign('languageId')->references('id')->on('languages');
         });
 
-        Schema::create('user_profiles', function (Blueprint $table) {
-            $table->unsignedInteger("userId");
+        Schema::table('roles', function (Blueprint $table) {
+            $table->foreign('roleDescriptionId')->references('id')->on('role_descriptions');
+        });
+
+        Schema::table('categories', function (Blueprint $table) {
+            $table->foreign('categoryDescriptionId')->references('id')->on('category_descriptions');
+        });
+
+        // tabelle utenti
+        Schema::create('users', function (Blueprint $table) {
+            $table->id("id");
+            $table->string("userName");
+            $table->string("password");
+            $table->unsignedBigInteger("roleId");
             $table->string("name");
             $table->string("lastName");
             $table->string("email");
             $table->double("credits");
-            $table->unsignedInteger("languageId");
+            $table->unsignedBigInteger("languageId");
             $table->timestamps();
 
-            $table->foreign('languageId')->references('languageId')->on('languages');
-        });
-
-        Schema::create('cities', function (Blueprint $table) {
-            $table->id("cityId");
-            $table->string("name");
-            $table->timestamps();
+            //la relazione
+            $table->foreign('roleId')->references('id')->on('roles');
+            $table->foreign('languageId')->references('id')->on('languages');
         });
 
         Schema::create('addresses', function (Blueprint $table) {
-            $table->id("addressId");
-            $table->unsignedInteger("cityId");
+            $table->id("id");
+            $table->unsignedBigInteger("cityId");
             $table->string("address");
             $table->string("postalCode");
             $table->string("state");
             $table->timestamps();
 
-            $table->foreign('cityId')->references('cityId')->on('cities');
-            //$table->foreign('addressId')->references('addressId')->on('users_addresses');
+            $table->foreign('cityId')->references('id')->on('cities');
         });
 
         Schema::create('users_addresses', function (Blueprint $table) {
-            $table->unsignedInteger("userId");
-            $table->unsignedInteger("addressId");
+            $table->unsignedBigInteger("userId");
+            $table->unsignedBigInteger("addressId");
 
-            $table->foreign('userId')->references('userId')->on('users');
-            $table->foreign('addressId')->references('addressId')->on('addresses');
+            $table->foreign('userId')->references('id')->on('users');
+            $table->foreign('addressId')->references('id')->on('addresses');
         });
 
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id("categoryId");
-            $table->unsignedInteger('categoryDescriptionId');
-            $table->timestamps();
-
-            //$table->foreign('translationId')->references('translationId')->on('translations');
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('id')->references('userId')->on('users_addresses');
         });
 
-        Schema::create('categoryDescriptions', function (Blueprint $table) {
-            $table->id('categoryDescriptionId');
-            $table->unsignedInteger('languageId');
-            $table->string('description');
-            $table->timestamps();
-
-            $table->foreign('languageId')->references('languageId')->on('languages');
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->foreign('id')->references('addressId')->on('users_addresses');
         });
 
         Schema::create('films', function (Blueprint $table) {
-            $table->id("filmId");
-            $table->foreignId('categoryId');
+            $table->id("id");
+            $table->unsignedBigInteger('categoryId');
             $table->string('title');
             $table->unsignedInteger('duration');
             $table->unsignedInteger('rating');
             $table->timestamps();
 
-            $table->foreign('categoryId')->references('categoryId')->on('categories');
+            $table->foreign('categoryId')->references('id')->on('categories');
         });
 
         Schema::create('series', function (Blueprint $table) {
-            $table->id('serieId');
-            $table->foreignId('categoryId');
+            $table->id('id');
+            $table->unsignedBigInteger('categoryId');
             $table->string('title');
             $table->unsignedInteger('rating');
             $table->timestamps();
 
-            $table->foreign('categoryId')->references('categoryId')->on('categories');
+            $table->foreign('categoryId')->references('id')->on('categories');
         });
 
         Schema::create('seasons', function (Blueprint $table) {
-            $table->id('seasonId');
-            $table->foreignId('serieId');
+            $table->id('id');
+            $table->unsignedBigInteger('serieId');
             $table->string('title');
             $table->timestamps();
 
-            $table->foreign('serieId')->references('serieId')->on('series');
+            $table->foreign('serieId')->references('id')->on('series');
         });
 
         Schema::create('episodes', function (Blueprint $table) {
-            $table->id('episodeId');
+            $table->id('id');
             $table->foreignId('seasonId');
             $table->string('title');
-            $table->unsignedInteger('duration');
+            $table->unsignedBigInteger('duration');
             $table->timestamps();
 
 
-            $table->foreign('seasonId')->references('seasonId')->on('seasons');
+            $table->foreign('seasonId')->references('id')->on('seasons');
         });
     }
 
