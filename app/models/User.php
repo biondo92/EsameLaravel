@@ -11,24 +11,25 @@ class user extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = "users";
-    protected $primaryKey = "userId";
+    protected $primaryKey = "id";
 
     protected $fillable = [
         "userName",
         "password",
         "roleId",
+        "name",
+        "lastName",
+        "languageId",
+        "email",
+        "credits"
     ];
 
     public function role()
     {
-        return $this->belongsTo(role::class, 'roleId', 'roleId');
-    }
-    public function profile()
-    {
-        return $this->belongsTo(userProfile::class, 'userId', 'userId');
+        return $this->belongsTo(role::class, 'roleId', 'id');
     }
     public function user_addresses()
     {
-        return $this->hasMany(usersAddresses::class, 'userId', 'userId');
+        return $this->hasMany(usersAddresses::class, 'id', 'userId');
     }
 }

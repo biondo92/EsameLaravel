@@ -17,15 +17,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call(
             [
-                TranslationsSeeder::class,
                 LanguagesSeeder::class,
-                Roles::class,
-                UserSeeder::class,
-                UserProfileSeeder::class,
                 CitiesSeeder::class,
+                Roles::class,
+                CategoriesSeeder::class,
+                RoleDescriptionSeeder::class,
+                CategoryDescriptionSeeder::class,
+                UserSeeder::class,
                 AddressSeeder::class,
                 UsersAddressesSeeder::class,
-                CategoriesSeeder::class
 
             ]
         );

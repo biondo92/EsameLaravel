@@ -12,7 +12,7 @@ class address extends Model
 
 
     protected $table = "addresses";
-    protected $primaryKey = "addressId";
+    protected $primaryKey = "id";
 
     protected $fillable = [
         "cityId",
@@ -23,10 +23,10 @@ class address extends Model
 
     public function city()
     {
-        return $this->belongsTo(cities::class, 'cityId', 'cityId');
+        return $this->belongsTo(city::class, 'cityId', 'id');
     }
     public function user_address()
     {
-        return $this->hasOne(usersAddresses::class, 'addressId', 'addressId');
+        return $this->hasOne(usersAddresses::class, 'id', 'addressId');
     }
 }

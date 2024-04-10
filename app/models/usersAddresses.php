@@ -11,15 +11,13 @@ class usersAddresses extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = "users_addresses";
-    protected $primaryKey = ["userId", "addressId"];
-
 
     public function user()
     {
-        return $this->hasOne(user::class, 'userId', 'userId');
+        return $this->hasOne(user::class, 'id', 'userId');
     }
     public function address()
     {
-        return $this->hasOne(address::class, 'addressId', 'addressId');
+        return $this->hasOne(address::class, 'id', 'addressId');
     }
 }

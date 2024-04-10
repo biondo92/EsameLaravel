@@ -6,21 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Episode extends Model
+class RoleDescription extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = "episodes";
+    protected $table = "role_descriptions";
     protected $primaryKey = "id";
 
     protected $fillable = [
-        "seasonId",
-        "title",
-        "duration",
+        "description"
     ];
-
-    public function season()
-    {
-        return $this->belongsTo(Season::class, 'seasonId', 'id');
-    }
 }

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class Roles extends Seeder
 {
@@ -13,22 +14,8 @@ class Roles extends Seeder
      */
     public function run(): void
     {
-        Role::create(
-            [
-                "traslationId" => 1
-            ]
-        );
-
-        Role::create(
-            [
-                "traslationId" => 2
-            ]
-        );
-
-        Role::create(
-            [
-                "traslationId" => 3
-            ]
-        );
+        DB::insert("INSERT INTO roles DEFAULT VALUES;");
+        DB::insert("INSERT INTO roles DEFAULT VALUES;");
+        DB::insert("INSERT INTO roles DEFAULT VALUES;");
     }
 }

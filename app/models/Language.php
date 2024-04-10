@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class languages extends Model
+class Language extends Model
 {
     use HasFactory, SoftDeletes;
 
 
     protected $table = "languages";
-    protected $primaryKey = "languageId";
+    protected $primaryKey = "id";
 
     protected $fillable = [
         "description",

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class setting extends Model
+class Setting extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $table = "settings";
-    protected $primaryKey = "settingId";
+    protected $primaryKey = "id";
 
     protected $fillable = [
         "code",

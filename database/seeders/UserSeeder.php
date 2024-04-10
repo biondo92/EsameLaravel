@@ -17,7 +17,12 @@ class UserSeeder extends Seeder
             [
                 "userName" => "admin",
                 "password" => "pass",
-                "roleId" => 1
+                "roleId" => 1,
+                "name" => "michele",
+                "lastName" => "iacuitto",
+                "email" => "email@gmail.com",
+                "credits" => 0,
+                "languageId" => 1
             ]
         );
     }

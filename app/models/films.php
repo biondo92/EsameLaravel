@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class films extends Model
+class film extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $table = "films";
-    protected $primaryKey = "filmId";
+    protected $primaryKey = "id";
 
     protected $fillable = [
         "categoryId",
@@ -24,6 +24,6 @@ class films extends Model
 
     public function category()
     {
-        return $this->hasOne(categories::class, 'categoryId', 'categoryId');
+        return $this->hasOne(categories::class, 'categoryId', 'id');
     }
 }

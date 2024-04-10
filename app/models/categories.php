@@ -11,18 +11,18 @@ class categories extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = "categories";
-    protected $primaryKey = "categoryId";
+    protected $primaryKey = "id";
 
     public function films()
     {
-        return $this->belongsTo(films::class, 'categoryId', 'categoryId');
+        return $this->belongsTo(film::class, 'categoryId', 'id');
     }
     public function series()
     {
-        return $this->belongsTo(series::class, 'categoryId', 'categoryId');
+        return $this->belongsTo(serie::class, 'categoryId', 'id');
     }
     public function description()
     {
-        return $this->hasMany(translations::class, 'tranlationId', 'traslationId');
+        return $this->hasMany(CategoryDescription::class, 'id', 'categoryId');
     }
 }

@@ -34,13 +34,11 @@ return new class extends Migration
 
         Schema::create('roles', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('roleDescriptionId');
             $table->timestamps();
         });
 
         Schema::create('categories', function (Blueprint $table) {
             $table->id("id");
-            $table->unsignedBigInteger('categoryDescriptionId');
             $table->timestamps();
         });
 
@@ -48,28 +46,25 @@ return new class extends Migration
         Schema::create('role_descriptions', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('languageId');
+            $table->unsignedBigInteger('roleId');
             $table->string('description');
             $table->timestamps();
 
             $table->foreign('languageId')->references('id')->on('languages');
+            $table->foreign('roleId')->references('id')->on('roles');
         });
 
         Schema::create('category_descriptions', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('languageId');
+            $table->unsignedBigInteger('categoryId');
             $table->string('description');
             $table->timestamps();
 
             $table->foreign('languageId')->references('id')->on('languages');
+            $table->foreign('categoryId')->references('id')->on('categories');
         });
 
-        Schema::table('roles', function (Blueprint $table) {
-            $table->foreign('roleDescriptionId')->references('id')->on('role_descriptions');
-        });
-
-        Schema::table('categories', function (Blueprint $table) {
-            $table->foreign('categoryDescriptionId')->references('id')->on('category_descriptions');
-        });
 
         // tabelle utenti
         Schema::create('users', function (Blueprint $table) {
