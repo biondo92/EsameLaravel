@@ -14,8 +14,6 @@ class Roles extends Seeder
      */
     public function run(): void
     {
-        DB::insert("INSERT INTO roles DEFAULT VALUES;");
-        DB::insert("INSERT INTO roles DEFAULT VALUES;");
-        DB::insert("INSERT INTO roles DEFAULT VALUES;");
+        DB::insert("INSERT INTO roles (id) VALUES (DEFAULT),(DEFAULT),(DEFAULT);");
     }
 }

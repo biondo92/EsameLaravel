@@ -18,33 +18,43 @@ class RoleDescriptionSeeder extends Seeder
                 "roleId" => 1,
                 "languageId" => 1,
                 "description" => "amministratore"
-            ],
+            ]
+        );
+
+        RoleDescription::create(
             [
                 "roleId" => 1,
                 "languageId" => 2,
                 "description" => "admin"
             ],
+        );
+        RoleDescription::create(
             [
                 "roleId" => 2,
                 "languageId" => 1,
                 "description" => "utente"
             ],
+        );
+        RoleDescription::create(
             [
                 "roleId" => 2,
                 "languageId" => 2,
                 "description" => "user"
             ],
+        );
+        RoleDescription::create(
             [
                 "roleId" => 3,
                 "languageId" => 1,
                 "description" => "ospite"
             ],
+        );
+        RoleDescription::create(
             [
                 "roleId" => 3,
                 "languageId" => 2,
                 "description" => "guest"
             ]
-
         );
     }
 }

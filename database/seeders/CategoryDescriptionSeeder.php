@@ -18,7 +18,11 @@ class CategoryDescriptionSeeder extends Seeder
                 "categoryId" => 1,
                 "languageId" => 1,
                 "description" => "azione"
-            ],
+            ]
+
+        );
+        CategoryDescription::create(
+
             [
                 "categoryId" => 1,
                 "languageId" => 2,

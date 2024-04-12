@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class address extends Model
+class Address extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -23,10 +23,10 @@ class address extends Model
 
     public function city()
     {
-        return $this->belongsTo(city::class, 'cityId', 'id');
+        return $this->belongsTo(City::class, 'cityId', 'id');
     }
     public function user_address()
     {
-        return $this->hasOne(usersAddresses::class, 'id', 'addressId');
+        return $this->hasOne(UsersAddresses::class, 'id', 'addressId');
     }
 }

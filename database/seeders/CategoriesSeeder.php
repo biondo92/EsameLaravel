@@ -15,6 +15,6 @@ class CategoriesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::insert("INSERT INTO categories DEFAULT VALUES;");
+        DB::insert("INSERT INTO categories (id) VALUES (DEFAULT);");
     }
 }

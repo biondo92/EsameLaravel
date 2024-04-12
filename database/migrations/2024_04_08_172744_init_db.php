@@ -103,14 +103,6 @@ return new class extends Migration
             $table->foreign('addressId')->references('id')->on('addresses');
         });
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('id')->references('userId')->on('users_addresses');
-        });
-
-        Schema::table('addresses', function (Blueprint $table) {
-            $table->foreign('id')->references('addressId')->on('users_addresses');
-        });
-
         Schema::create('films', function (Blueprint $table) {
             $table->id("id");
             $table->unsignedBigInteger('categoryId');

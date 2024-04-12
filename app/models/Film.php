@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Serie extends Model
+class Film extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = "series";
+    protected $table = "films";
     protected $primaryKey = "id";
 
     protected $fillable = [
         "categoryId",
+        "duration",
         "rating",
         "title"
 
@@ -23,10 +24,6 @@ class Serie extends Model
 
     public function category()
     {
-        return $this->hasOne(categories::class, 'categoryId', 'id');
-    }
-    public function seasons()
-    {
-        return $this->hasMany(seasons::class, 'serieId', 'id');
+        return $this->hasOne(Category::class, 'categoryId', 'id');
     }
 }
