@@ -32,4 +32,8 @@ class User extends Model
     {
         return $this->hasMany(UsersAddresses::class, 'id', 'userId');
     }
+    public function session()
+    {
+        return $this->hasMany(UserSession::class, 'id', 'userId');
+    }
 }

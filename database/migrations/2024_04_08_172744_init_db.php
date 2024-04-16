@@ -71,6 +71,7 @@ return new class extends Migration
             $table->id("id");
             $table->string("userName");
             $table->string("password");
+            $table->string("salt");
             $table->unsignedBigInteger("roleId");
             $table->string("name");
             $table->string("lastName");
@@ -82,6 +83,29 @@ return new class extends Migration
             //la relazione
             $table->foreign('roleId')->references('id')->on('roles');
             $table->foreign('languageId')->references('id')->on('languages');
+        });
+
+        Schema::create('user_session', function (Blueprint $table) {
+            $table->id("id");
+            $table->unsignedBigInteger("userId");
+            $table->dateTime("started_at");
+            $table->dateTime("ended_at")->nullable();
+            $table->boolean("active");
+            $table->timestamps();
+
+            //la relazione
+            $table->foreign('userId')->references('id')->on('users');
+        });
+
+        Schema::create('user_login', function (Blueprint $table) {
+            $table->id("id");
+            $table->unsignedBigInteger("userId");
+            $table->string("jwt");
+            $table->boolean("active");
+            $table->timestamps();
+
+            //la relazione
+            $table->foreign('userId')->references('id')->on('users');
         });
 
         Schema::create('addresses', function (Blueprint $table) {
